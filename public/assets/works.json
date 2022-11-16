@@ -1,0 +1,42 @@
+[
+    {
+        "name": "OnRising",
+        "description": "Development of management applications for the public sector nationwide, using Java EE, Hibernate, JSF. Working on the implementation and maintenance of features and the integration of legacy systems. Also using KANBAN as a framework for the development flow and GIT and SVN for version control.",
+        "job_title": "Software Developer",
+        "date_start": "Nov de 2021",
+        "date_end": null,
+        "photo": "path"
+    },
+    {
+        "name": "Softplan",
+        "description": "Development of management applications for civil construction nationwide, using Java EE, Hibernate, Jsp and React. Working on implementing and maintaining capabilities and integrating legacy systems. Also using KANBAN as a framework for the development flow and GIT for version control.",
+        "job_title": "Software Developer",
+        "date_start": "Jun de 2021",
+        "date_end": "Nov de 2021",
+        "photo": "path"
+    },
+    {
+        "name": "Betha System",
+        "description": "Development of management and care applications for public health nationwide, using Java EE, Hibernate, Angular JS, Ionic. Working on the implementation and maintenance of features and integration of legacy systems. Also using SCRUM as a framework for the development flow and GIT/SVN for version control.",
+        "job_title": "Software Developer",
+        "date_start": "Dez de 2019",
+        "date_end": "Jun de 2021",
+        "photo": "path"
+    },
+    {
+        "name": "CRP Technology",
+        "description": "Development of task automation applications for the court, using Java EE, Hibernate, JSF, Node Angular React. Working on the implementation and maintenance of features and on the integration of legacy systems. Using for the development flow and GIT/SVN for version control.",
+        "job_title": "Software Developer",
+        "date_start": "Ago de 2019",
+        "date_end": "Dez de 2019",
+        "photo": "path"
+    },
+    {
+        "name": "Regional Electoral Court of Santa Catarina",
+        "description": "Development of task automation applications for the court, using Java EE, Hibernate, JSF, Node Angular React. Working on the implementation and maintenance of features and on the integration of legacy systems. Using for the development flow and GIT/SVN for version control.",
+        "job_title": "Software Developer Intern",
+        "date_start": "Jul de 2018",
+        "date_end": "Ago de 2019",
+        "photo": "path"
+    }
+]
