@@ -1,7 +1,5 @@
 module.exports = {
-    experimental: {
-        images: {
-            unoptimized: true
-        }
-    }
-}
+    images: {
+      domains: ['assets.acme.com'],
+    },
+  }

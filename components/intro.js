@@ -4,7 +4,6 @@ import Works from '../public/assets/works.json';
 import SocialMedias from './social-medias';
 import { useState, useEffect } from 'react';
 
-
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: undefined,
@@ -68,7 +67,6 @@ export default function Intro() {
             {Works.map((work, idx) =>
               <div key={idx} className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-[#36393F] dark:border-gray-700">
                 <a href="#">
-                  <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
                 </a>
                 <div className="p-5">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{work.name}</h5>
