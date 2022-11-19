@@ -55,7 +55,7 @@ export default function Contact() {
 								<SocialMedias className='rounded-full mx-auto' width={45} height={45} />
 							</div>
 
-							<div className='container mx-auto'>
+							<div className='container mx-auto border border-gray-200 rounded-md p-2 shadow-md dark:bg-[#36393F] dark:border-gray-700'>
 								<form action="#" className="space-y-8" onSubmit={handleSubmit} autoComplete="none">
 									<div className='flex justify-between flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row lg:space-x-2 xl:space-x-2 2xl:space-x-2'>
 										<div>
@@ -77,7 +77,7 @@ export default function Contact() {
 									</div>
 									<div className="sm:col-span-2">
 										<label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-										<textarea id="message" name="message" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500  dark:border-gray-600  dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:bg-[#40444B]" placeholder='Your message'></textarea>
+										<textarea id="message" name="message" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500  dark:border-gray-600  dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:bg-[#40444B] resize-none" placeholder='Your message'></textarea>
 									</div>
 									<button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
 										Submit
