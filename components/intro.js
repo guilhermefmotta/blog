@@ -1,4 +1,4 @@
-import me from '../public/assets/photo/perfil_linkedin.png';
+
 import Image from 'next/image'
 import Works from '../public/assets/works.json';
 import SocialMedias from './social-medias';
@@ -40,7 +40,7 @@ export default function Intro() {
           <div className="pt-8 md:p-8 text-center md:text-left space-y-4 text-lg text-white font-medium">
             <blockquote>
               <div className='flex flex-col place-items-center' >
-                <Image alt="me" src={me} className='rounded-full mx-auto transition-opacity duration-1000 ease-out  hover:opacity-60' width={120} height={120} />
+                <Image alt="me" src="/assets/photo/perfil_linkedin.png" className='rounded-full mx-auto transition-opacity duration-1000 ease-out  hover:opacity-60' width={120} height={120} />
                 <SocialMedias className='rounded-full mx-auto' width={25} height={25}/>
               </div>
               <div className='flex items-center' >

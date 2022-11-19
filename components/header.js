@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <nav className="bg-white mb-7 px-2 py-2.5  border border-gray-200 shadow-md dark:bg-[#36393F] dark:border-gray-700 sticky top-0 z-50">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <Link href={`/`} classNameName="flex items-center ">
+        <Link href={`/`} className="flex items-center ">
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white cursor-pointer logo"
           >GM</span>
         </Link>
