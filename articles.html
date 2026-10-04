@@ -1,0 +1,56 @@
+---
+title: Articles
+nav: articles
+description: Brain dumps, deep dives and field reports about software, AI and building tools.
+permalink: /articles/
+---
+{%- assign categories = site.posts | map: "category" | compact | uniq | sort -%}
+<div class="flex flex-col w-full pb-space-xl" data-filter-root data-active-class="bg-primary-container" data-idle-class="bg-surface-container-lowest">
+  <section class="w-full pt-space-md pb-space-lg flex flex-col gap-space-md">
+    <div class="flex flex-wrap items-center gap-space-xs">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full comic-border bg-primary-container text-on-surface font-label-md text-label-md comic-shadow-sm font-bold -rotate-1"><span>📝</span> FROM THE DESK</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full comic-border bg-secondary-container text-on-secondary-container font-label-md text-label-md comic-shadow-sm font-bold rotate-1"><span>⭐</span> {{ site.posts.size }} ARTICLES</span>
+      <a href="{{ '/feed.xml' | relative_url }}" class="inline-flex items-center gap-1 px-3 py-1 rounded-full comic-border bg-tertiary-container text-on-surface font-label-md text-label-md comic-shadow-sm font-bold hover:-translate-y-0.5 transition-transform"><span class="material-symbols-outlined text-[16px]">rss_feed</span> RSS</a>
+    </div>
+    <h1 class="font-display-hero text-headline-lg-mobile md:text-display-hero text-on-surface tracking-tight leading-[1.1] max-w-4xl">
+      Fresh
+      <span class="relative inline-block px-2.5 py-0.5 mx-1 -rotate-1"><span class="absolute inset-0 bg-primary-container comic-border rounded-lg -z-10"></span><span class="relative">Brain Dumps</span></span>
+      &amp; Deep Dives
+    </h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">{{ page.description }}</p>
+
+    <div class="w-full bg-surface-container-lowest comic-border rounded-2xl comic-shadow-md p-space-md flex flex-col gap-space-md mt-space-xs">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[22px]">search</span>
+        <input data-filter-search class="w-full pl-11 pr-4 py-3 rounded-xl comic-border bg-surface font-code-inline text-code-inline text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search articles..." type="text">
+      </div>
+      {%- if categories.size > 0 %}
+      <div class="flex flex-wrap items-center gap-space-xs pt-1 border-t-2 border-[#18181b]/10">
+        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mr-1">Filter:</span>
+        <button type="button" data-filter-btn="all" class="px-3 py-1 rounded-full comic-border bg-primary-container text-on-surface font-label-sm text-label-sm comic-shadow-sm font-bold transition-transform hover:-translate-y-0.5">All ({{ site.posts.size }})</button>
+        {%- for c in categories %}
+        {%- assign n = site.posts | where: "category", c | size %}
+        <button type="button" data-filter-btn="{{ c | slugify }}" class="px-3 py-1 rounded-full comic-border bg-surface-container-lowest text-on-surface font-label-sm text-label-sm comic-shadow-sm transition-transform hover:-translate-y-0.5">{{ c }} ({{ n }})</button>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+  </section>
+
+  <div class="flex items-center justify-between mb-space-md">
+    <div class="flex items-center gap-2">
+      <span class="w-3.5 h-3.5 rounded-full bg-primary-container comic-border"></span>
+      <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">All Articles</h2>
+    </div>
+    <span class="font-label-sm text-label-sm text-on-surface-variant">Showing <span data-filter-count>{{ site.posts.size }}</span> of {{ site.posts.size }}</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" data-filter-grid>
+    {%- for post in site.posts %}
+    {% include post-card.html post=post show_excerpt=true %}
+    {%- endfor %}
+  </div>
+  <div data-filter-empty class="hidden p-space-xl bg-surface-container-lowest comic-border rounded-xl comic-shadow-md text-center my-space-md">
+    <span class="material-symbols-outlined text-[48px] text-primary mb-2">search_off</span>
+    <h3 class="font-headline-sm text-headline-sm text-on-surface">No articles matched that search!</h3>
+  </div>
+</div>

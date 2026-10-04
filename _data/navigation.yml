@@ -1,0 +1,12 @@
+- title: Articles
+  url: /articles/
+  key: articles
+- title: Projects
+  url: /projects/
+  key: projects
+- title: Snippets
+  url: /snippets/
+  key: snippets
+- title: About
+  url: /about/
+  key: about

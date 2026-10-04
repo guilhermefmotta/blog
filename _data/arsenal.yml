@@ -1,0 +1,16 @@
+# Tech stack cards on /about/ — taken from public GitHub repos.
+- title: Desktop & Systems
+  icon: memory
+  bg: bg-secondary-container
+  blurb: Native-feeling desktop apps and low-level tooling, from Tauri shells to raylib-rendered editors.
+  items: [Rust, Tauri 2, Odin, raylib, egui, C++]
+- title: Web & Backend
+  icon: dns
+  bg: bg-tertiary-container
+  blurb: Typed frontends and production-ready services with observability baked in.
+  items: [TypeScript, React, Java, Spring Boot, Go, SQLite]
+- title: Tooling & Flow
+  icon: terminal
+  bg: bg-primary-container
+  blurb: Keyboard-first editing, AI-assisted workflows and automation pipelines.
+  items: [Emacs, Vim keymaps, Claude Code, n8n, GitHub Actions, Git Worktrees]

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+{% include head.html %}
+<body class="bg-background font-body-md text-on-surface comic-dot-grid min-h-screen flex flex-col selection:bg-primary-container selection:text-on-surface">
+  {% include header.html %}
+  <main class="w-full flex-grow pt-28 max-w-[1120px] mx-auto px-gutter-mobile md:px-gutter">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+{%- assign cat = include.category | default: "default" -%}
+{%- assign color = site.category_colors[cat] | default: site.category_colors.default -%}
+{{- color -}}

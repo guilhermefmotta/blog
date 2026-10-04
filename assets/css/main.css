@@ -1,0 +1,147 @@
+/* Neo-Comic Brutalism — shared utilities (see layout/neo_comic_brutalism/DESIGN.md) */
+html, body { margin: 0; padding: 0; }
+body { overscroll-behavior: none; }
+html { scroll-padding-top: 7rem; }
+
+.comic-border { border: 3.5px solid #18181b; }
+.comic-shadow-sm { box-shadow: 3px 3px 0 #18181b; }
+.comic-shadow-md { box-shadow: 4px 4px 0 #18181b; }
+.comic-shadow-lg { box-shadow: 6px 6px 0 #18181b; }
+.comic-dot-grid {
+  background-image: radial-gradient(#18181b 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.hover\:comic-shadow-md:hover { box-shadow: 4px 4px 0 #18181b; }
+.hover\:comic-shadow-lg:hover { box-shadow: 6px 6px 0 #18181b; }
+.focus\:comic-shadow-md:focus { box-shadow: 4px 4px 0 #18181b; }
+
+.neo-border { border: 3px solid #18181b; }
+.neo-border-sm { border: 2px solid #18181b; }
+.neo-shadow { box-shadow: 4px 4px 0 #18181b; }
+.neo-shadow-lg { box-shadow: 6px 6px 0 #18181b; }
+.neo-shadow-sm { box-shadow: 2px 2px 0 #18181b; }
+
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+/* ---------- Article prose (Markdown output) ---------- */
+.prose-comic { font-family: Inter, sans-serif; color: #3f3f46; line-height: 1.75; }
+.prose-comic > * + * { margin-top: 1.1rem; }
+.prose-comic h2 {
+  font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.5rem;
+  line-height: 1.25; color: #18181b; margin-top: 2.5rem; padding-top: 2rem;
+  border-top: 3px solid #18181b; display: flex; align-items: center; gap: .6rem;
+}
+.prose-comic > h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.prose-comic h2 .h-num {
+  font-family: "JetBrains Mono", monospace; font-size: .75rem; font-weight: 700;
+  padding: .25rem .6rem; border: 2px solid #18181b; border-radius: .5rem; flex-shrink: 0;
+}
+.prose-comic h3 {
+  font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.25rem;
+  color: #18181b; margin-top: 2rem;
+}
+.prose-comic h4 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: #18181b; }
+.prose-comic a { color: #18181b; font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: #fde047; }
+.prose-comic a:hover { background: #fde047; }
+.prose-comic strong { color: #18181b; }
+.prose-comic ul, .prose-comic ol { padding-left: 1.4rem; }
+.prose-comic ul { list-style: none; padding-left: 0; }
+.prose-comic ul > li { position: relative; padding-left: 1.6rem; }
+.prose-comic ul > li::before {
+  content: ""; position: absolute; left: .2rem; top: .62em; width: .6rem; height: .6rem;
+  background: #fde047; border: 2px solid #18181b; border-radius: 9999px;
+}
+.prose-comic ol { list-style: decimal; }
+.prose-comic ol > li::marker { font-family: "JetBrains Mono", monospace; font-weight: 700; color: #18181b; }
+.prose-comic li + li { margin-top: .4rem; }
+.prose-comic hr { border: 0; border-top: 3px dashed #18181b; opacity: .25; margin: 2rem 0; }
+.prose-comic img { border: 3px solid #18181b; border-radius: 1rem; box-shadow: 4px 4px 0 #18181b; }
+
+/* Blockquote = "Sticker of Truth" */
+.prose-comic blockquote {
+  margin: 1.75rem 0; padding: 1.5rem; background: #fde047; border: 3px solid #18181b;
+  border-radius: .75rem; box-shadow: 4px 4px 0 #18181b;
+  font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.25rem;
+  font-style: italic; line-height: 1.35; color: #18181b;
+}
+.prose-comic blockquote::before {
+  content: "📌 Sticker of Truth"; display: block; margin-bottom: .5rem;
+  font-family: "JetBrains Mono", monospace; font-style: normal; font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .05em; color: #27272a;
+}
+.prose-comic blockquote p { margin: 0; }
+
+/* Callouts: kramdown IAL, e.g. {: .callout .callout-alert} */
+.prose-comic .callout {
+  padding: 1.25rem; border: 3px solid #18181b; border-radius: .75rem;
+  box-shadow: 2px 2px 0 #18181b; color: #18181b; font-size: .95rem;
+  background: rgba(125, 211, 252, .35);
+}
+.prose-comic .callout-alert { background: rgba(252, 165, 165, .4); }
+.prose-comic .callout-success { background: rgba(134, 239, 172, .4); }
+.prose-comic .callout-tip { background: rgba(253, 224, 71, .35); }
+
+/* Inline code */
+.prose-comic :not(pre) > code {
+  font-family: "JetBrains Mono", monospace; font-size: .85em; font-weight: 500;
+  background: #f0edf1; border: 2px solid #18181b; border-radius: .375rem; padding: .05rem .35rem;
+  color: #18181b;
+}
+
+/* Tables */
+.prose-comic table { width: 100%; border-collapse: separate; border-spacing: 0; border: 3px solid #18181b; border-radius: .75rem; overflow: hidden; font-size: .9rem; }
+.prose-comic th { background: #fde047; font-family: "JetBrains Mono", monospace; text-align: left; }
+.prose-comic th, .prose-comic td { padding: .6rem .8rem; border-bottom: 2px solid #18181b; }
+.prose-comic tr:last-child td { border-bottom: 0; }
+
+/* ---------- Code window (Rouge blocks get wrapped by site.js) ---------- */
+.code-window {
+  border: 3px solid #18181b; border-radius: .75rem; overflow: hidden;
+  box-shadow: 4px 4px 0 #18181b; background: #18181b; margin: 1.5rem 0;
+}
+.code-window__bar {
+  display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+  padding: .55rem 1rem; background: #27272a; border-bottom: 2px solid #18181b;
+}
+.code-window__dots { display: flex; align-items: center; gap: .5rem; }
+.code-window__dots span { width: .75rem; height: .75rem; border-radius: 9999px; border: 1px solid #000; }
+.code-window__dots span:nth-child(1) { background: #ef4444; }
+.code-window__dots span:nth-child(2) { background: #eab308; }
+.code-window__dots span:nth-child(3) { background: #22c55e; }
+.code-window__label { margin-left: .5rem; font-family: "JetBrains Mono", monospace; font-size: .75rem; color: #a1a1aa; }
+.code-window__copy {
+  display: inline-flex; align-items: center; gap: .25rem; padding: .2rem .6rem;
+  background: #18181b; color: #fde047; border: 2px solid #18181b; border-radius: .375rem;
+  font-family: "JetBrains Mono", monospace; font-size: .75rem; font-weight: 700; cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.code-window__copy:hover { background: #fde047; color: #18181b; }
+.code-window pre, .code-window .highlight { margin: 0; background: transparent; }
+.code-window pre {
+  padding: 1rem; overflow-x: auto; font-family: "JetBrains Mono", monospace;
+  font-size: .85rem; line-height: 1.7; color: #e4e4e7;
+}
+
+/* Rouge token colors tuned to the comic palette */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .cp { color: #71717a; font-style: italic; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kc, .highlight .kp, .highlight .ow { color: #fbbf24; }
+.highlight .kt, .highlight .nc, .highlight .nn { color: #7dd3fc; }
+.highlight .nf, .highlight .fm, .highlight .nb, .highlight .bp { color: #38bdf8; }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss { color: #86efac; }
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .il { color: #fca5a5; }
+.highlight .na, .highlight .nt, .highlight .nv, .highlight .vi { color: #fde047; }
+.highlight .o, .highlight .p { color: #d4d4d8; }
+.highlight .gd { color: #fca5a5; }
+.highlight .gi { color: #86efac; }
+.highlight .err { color: #fca5a5; }
+
+/* Toast */
+#copy-toast.show { transform: translateY(0); opacity: 1; }
+
+/* Mobile nav */
+details.mobile-nav > summary { list-style: none; }
+details.mobile-nav > summary::-webkit-details-marker { display: none; }
+
+/* Snippet cards (Rouge output without the article wrapper) */
+.snippet-code .highlight, .snippet-code pre { margin: 0; background: transparent; }
+.snippet-code pre { padding: .85rem; overflow-x: auto; font-family: "JetBrains Mono", monospace; font-size: 13px; line-height: 1.6; color: #f4f4f5; }

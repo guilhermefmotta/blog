@@ -1,0 +1,146 @@
+---
+title: Snippets
+nav: snippets
+description: Battle-tested Rust, TypeScript, Java and CSS snippets I keep copying between projects.
+permalink: /snippets/
+filters:
+  - { key: rust, label: Rust }
+  - { key: typescript, label: TypeScript & React }
+  - { key: java, label: Java }
+  - { key: css, label: CSS }
+---
+{%- assign snippets = site.snippets | sort: "date" | reverse -%}
+{%- assign featured = snippets | where: "featured", true | first -%}
+<div class="flex flex-col w-full pb-space-xl" data-filter-root data-active-class="bg-primary-container font-bold" data-idle-class="bg-surface-container-lowest">
+
+<section class="w-full pt-space-md pb-space-lg flex flex-col gap-space-md">
+  <div class="flex flex-wrap items-center gap-space-xs">
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full comic-border bg-primary-container text-on-surface font-label-md text-label-md comic-shadow-sm font-bold -rotate-1"><span>⚡</span> BITE-SIZED CODE SOLUTIONS</span>
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full comic-border bg-secondary-container text-on-secondary-container font-label-md text-label-md comic-shadow-sm font-bold rotate-[1.5deg]"><span>📋</span> COPY-PASTE READY</span>
+    <span class="hidden sm:inline-flex items-center gap-1 px-3 py-1 rounded-full comic-border bg-tertiary-container text-on-surface font-label-md text-label-md comic-shadow-sm font-bold"><span>⭐</span> {{ snippets.size }} HELPERS</span>
+  </div>
+  <div>
+    <h1 class="font-display-hero text-headline-lg-mobile md:text-display-hero text-on-surface tracking-tight leading-[1.1] max-w-4xl">
+      Handcrafted
+      <span class="relative inline-block px-2.5 py-0.5 mx-1 -rotate-1"><span class="absolute inset-0 bg-primary-container comic-border rounded-lg -z-10 scale-105"></span><span class="relative">Code Snippets</span></span>
+      &amp; Utilities
+    </h1>
+    <p class="mt-space-sm font-body-lg text-body-lg text-on-surface-variant max-w-2xl">{{ page.description }} Zero bloat.</p>
+  </div>
+  <div class="w-full bg-surface-container-lowest comic-border rounded-2xl comic-shadow-md p-space-md flex flex-col gap-space-md mt-space-xs">
+    <div class="flex flex-col md:flex-row items-stretch md:items-center gap-space-sm">
+      <div class="relative flex-1">
+        <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[22px]">search</span>
+        <input data-filter-search class="w-full pl-11 pr-4 py-3 rounded-xl comic-border bg-surface font-code-inline text-code-inline text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search snippets (e.g., 'tauri', 'hotkey', 'record')..." type="text">
+      </div>
+      <div class="relative min-w-[190px]">
+        <select data-filter-sort class="w-full appearance-none pl-3.5 pr-9 py-3 rounded-xl comic-border bg-tertiary-container font-label-md text-label-md text-on-surface comic-shadow-sm cursor-pointer focus:outline-none font-bold">
+          <option value="recent">Sort: Newest First</option>
+          <option value="name">Sort: Alphabetical</option>
+        </select>
+        <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface text-[20px]">expand_more</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-space-xs pt-1 border-t-2 border-[#18181b]/10">
+      <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mr-1">Filter:</span>
+      <button type="button" data-filter-btn="all" class="px-3 py-1 rounded-full comic-border bg-primary-container font-bold text-on-surface font-label-sm text-label-sm comic-shadow-sm transition-transform hover:-translate-y-0.5">All Snippets ({{ snippets.size }})</button>
+      {%- for f in page.filters %}
+      {%- assign n = 0 %}{% for s in snippets %}{% assign cats = s.category | split: " " %}{% if cats contains f.key %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+      {%- if n > 0 %}
+      <button type="button" data-filter-btn="{{ f.key }}" class="px-3 py-1 rounded-full comic-border bg-surface-container-lowest text-on-surface font-label-sm text-label-sm comic-shadow-sm transition-transform hover:-translate-y-0.5">{{ f.label }} ({{ n }})</button>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{%- if featured %}
+<section class="w-full mt-space-md mb-space-xl">
+  <div class="relative bg-surface-container-lowest comic-border rounded-2xl comic-shadow-lg p-space-md md:p-space-lg">
+    <div class="absolute -top-3 left-10 w-24 h-7 bg-primary-container/80 comic-border rotate-2 comic-shadow-sm pointer-events-none flex items-center justify-center font-label-sm text-[10px] tracking-widest text-[#18181b]/60 uppercase">Sticky Note</div>
+    <div class="flex flex-wrap items-center gap-space-xs pt-2">
+      {%- for b in featured.badges %}
+      <span class="px-2.5 py-0.5 rounded-full comic-border {% cycle 'bg-secondary-container', 'bg-primary-container', 'bg-tertiary-container' %} text-on-surface font-label-sm text-label-sm font-bold uppercase">{{ b }}</span>
+      {%- endfor %}
+    </div>
+    <div class="mt-space-sm mb-space-sm">
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-surface tracking-tight flex items-center gap-2"><span>🔥</span> Featured: {{ featured.file }}</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-3xl">{{ featured.description }}</p>
+    </div>
+    <div class="mt-space-md comic-border rounded-xl bg-[#18181b] overflow-hidden">
+      <div class="flex items-center justify-between px-space-md py-2.5 bg-[#27272a] border-b-2 border-[#18181b]">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-[#ef4444] border border-black"></div>
+          <div class="w-3 h-3 rounded-full bg-[#eab308] border border-black"></div>
+          <div class="w-3 h-3 rounded-full bg-[#22c55e] border border-black"></div>
+          <span class="ml-3 font-label-sm text-label-sm text-surface-container-low font-bold">{{ featured.file }}</span>
+        </div>
+        <button type="button" data-copy="#featured-code" data-copy-message="Snippet copied to clipboard!" class="flex items-center gap-1.5 px-3 py-1 rounded-lg border-2 border-[#18181b] bg-primary-container text-on-surface font-label-md text-label-md font-bold comic-shadow-sm hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+          <span class="material-symbols-outlined text-[16px]">content_copy</span><span>Copy</span>
+        </button>
+      </div>
+      <div class="snippet-code" id="featured-code">{{ featured.content }}</div>
+    </div>
+  </div>
+</section>
+{%- endif %}
+
+<div class="flex items-center justify-between mb-space-md">
+  <div class="flex items-center gap-2">
+    <span class="w-3.5 h-3.5 rounded-full bg-primary-container comic-border"></span>
+    <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Browse All Snippets</h2>
+  </div>
+  <span class="font-label-sm text-label-sm text-on-surface-variant">Showing <span data-filter-count>{{ snippets.size }}</span> of {{ snippets.size }}</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" data-filter-grid>
+  {%- for s in snippets %}
+  <article data-card data-category="{{ s.category }}" data-date="{{ s.date | date: '%Y-%m-%d' }}" data-name="{{ s.title | downcase }}" class="flex flex-col justify-between bg-surface-container-lowest comic-border rounded-2xl comic-shadow-md hover:comic-shadow-lg transition-all p-space-md group min-w-0">
+    <div class="min-w-0">
+      <div class="flex items-center justify-between gap-2 mb-space-xs">
+        <div class="flex items-center gap-1.5">
+          {%- for b in s.badges %}
+          <span class="px-2 py-0.5 rounded-full comic-border {% if forloop.first %}bg-tertiary-container font-bold uppercase{% else %}bg-surface-container text-on-surface-variant{% endif %} text-on-surface font-label-sm text-[11px]">{{ b }}</span>
+          {%- endfor %}
+        </div>
+        <button type="button" data-copy="#snippet-{{ forloop.index }}" data-copy-message="Snippet copied to clipboard!" title="Copy snippet" class="w-8 h-8 shrink-0 rounded-lg comic-border bg-primary-container flex items-center justify-center comic-shadow-sm hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[17px]">content_copy</span>
+        </button>
+      </div>
+      <h3 class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors">{{ s.title }}</h3>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ s.description }}</p>
+      <div class="mt-space-sm comic-border rounded-xl bg-[#18181b] overflow-hidden">
+        <div class="px-3 py-1.5 bg-[#27272a] border-b border-[#18181b] flex items-center justify-between">
+          <span class="font-label-sm text-[10px] text-surface-container-low">{{ s.file }}</span>
+          <span class="font-label-sm text-[10px] text-[#86efac]">{{ s.lang_label }}</span>
+        </div>
+        <div class="snippet-code max-h-72 overflow-y-auto" id="snippet-{{ forloop.index }}">{{ s.content }}</div>
+      </div>
+    </div>
+    <div class="mt-space-md pt-space-xs border-t-2 border-[#18181b]/10 flex items-center justify-between">
+      <div class="flex items-center gap-1.5">
+        {%- for t in s.tags %}<span class="font-code-inline text-[11px] text-on-surface-variant">#{{ t }}</span>{% endfor %}
+      </div>
+      <span class="font-label-sm text-label-sm text-on-surface-variant">{{ s.date | date: "%b %Y" }}</span>
+    </div>
+  </article>
+  {%- endfor %}
+</div>
+
+{%- if site.social.github != "" %}
+<section class="w-full mt-space-xl">
+  <div class="relative bg-primary-container comic-border rounded-2xl comic-shadow-lg p-space-md md:p-space-lg overflow-hidden flex flex-col md:flex-row items-center justify-between gap-space-lg">
+    <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-surface-container-lowest comic-border rounded-full flex items-center justify-center rotate-12 opacity-80 pointer-events-none">
+      <span class="font-headline-sm text-xs font-black text-center text-[#18181b] uppercase leading-tight">OPEN<br>SOURCE<br>❤️</span>
+    </div>
+    <div class="max-w-xl text-center md:text-left z-10">
+      <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full comic-border bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-bold mb-space-xs"><span>💡</span> COMMUNITY DRIVEN</div>
+      <h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">Missing a snippet you copy every week?</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-1">Open an issue on GitHub. If it saves 15 minutes of StackOverflow rabbit-holing, it belongs here.</p>
+    </div>
+    <a class="z-10 w-full sm:w-auto px-space-md py-3 rounded-xl comic-border bg-surface-container-lowest text-on-surface font-headline-sm text-label-md comic-shadow-sm hover:comic-shadow-md hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2" href="{{ site.social.github }}" target="_blank" rel="noopener">
+      <span class="material-symbols-outlined text-[20px] text-primary">add_circle</span><span>Suggest on GitHub 💡</span>
+    </a>
+  </div>
+</section>
+{%- endif %}
+</div>

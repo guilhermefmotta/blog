@@ -1,0 +1,52 @@
+{%- assign active = page.nav -%}
+{%- if page.collection == "posts" -%}{%- assign active = "articles" -%}{%- endif -%}
+<header class="fixed top-0 left-0 right-0 z-50 px-gutter-mobile md:px-gutter py-space-sm">
+  <div class="relative h-20 max-w-[1120px] mx-auto bg-surface-container-lowest comic-border rounded-xl comic-shadow-md px-space-md md:px-space-lg flex items-center justify-between gap-space-sm">
+    <div class="flex items-center gap-space-sm">
+      <a class="flex items-center gap-space-sm group" href="{{ '/' | relative_url }}">
+        <img alt="{{ site.title }} logo" class="h-9 w-9 rounded-lg object-contain transition-transform group-hover:rotate-12" src="{{ '/assets/img/logo.png' | relative_url }}">
+        <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">{{ site.title }}</span>
+      </a>
+      {%- if site.version_badge %}
+      <span class="hidden sm:inline-flex items-center px-space-xs py-0.5 rounded-full comic-border bg-secondary-container text-on-secondary-container font-label-sm text-label-sm comic-shadow-sm">{{ site.version_badge }}</span>
+      {%- endif %}
+    </div>
+
+    <nav class="hidden lg:flex items-center gap-space-xs font-headline-sm text-label-md">
+      {%- for item in site.data.navigation %}
+      {%- if item.key == active %}
+      <a aria-current="page" class="px-space-sm py-1.5 rounded-lg transition-all hover:-translate-y-0.5 bg-primary-container text-on-surface comic-border comic-shadow-sm" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {%- else %}
+      <a class="px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all hover:-translate-y-0.5" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {%- endif %}
+      {%- endfor %}
+    </nav>
+
+    <div class="flex items-center gap-space-sm">
+      {%- if site.buy_me_a_coffee != "" %}
+      <a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-xl comic-border bg-primary-container text-on-surface font-headline-sm text-label-md comic-shadow-sm hover:comic-shadow-md hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all" href="{{ site.buy_me_a_coffee }}" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined text-[18px]">coffee</span><span>Buy Me a Coffee</span>
+      </a>
+      {%- endif %}
+      {%- if site.social.github != "" %}
+      <a aria-label="GitHub" class="w-9 h-9 rounded-xl comic-border bg-tertiary-container flex items-center justify-center comic-shadow-sm hover:comic-shadow-md hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all" href="{{ site.social.github }}" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined text-[20px] text-on-surface">code</span>
+      </a>
+      {%- endif %}
+      <a href="{{ '/about/' | relative_url }}" class="hidden sm:block">
+        <img alt="{{ site.author.name }}" class="w-9 h-9 rounded-full object-cover comic-border bg-secondary-container" src="{{ site.author.avatar | relative_url }}">
+      </a>
+
+      <details class="mobile-nav lg:hidden">
+        <summary aria-label="Menu" class="w-9 h-9 rounded-xl comic-border bg-surface-container-low flex items-center justify-center comic-shadow-sm cursor-pointer">
+          <span class="material-symbols-outlined text-[20px] text-on-surface">menu</span>
+        </summary>
+        <nav class="absolute right-0 top-[calc(100%+0.5rem)] w-56 p-space-sm bg-surface-container-lowest comic-border rounded-xl comic-shadow-md flex flex-col gap-1 font-headline-sm text-label-md">
+          {%- for item in site.data.navigation %}
+          <a class="px-space-sm py-2 rounded-lg {% if item.key == active %}bg-primary-container comic-border{% else %}hover:bg-surface-container{% endif %}" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {%- endfor %}
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

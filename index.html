@@ -1,0 +1,181 @@
+---
+title: Home
+nav: home
+---
+{%- assign first_name = site.author.name | split: " " | first -%}
+<div class="flex flex-col w-full gap-space-xl pb-space-xl">
+
+<!-- HERO -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center pt-space-md">
+  <div class="lg:col-span-7 flex flex-col gap-space-md items-start">
+    <div class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-full comic-border bg-surface-container-lowest comic-shadow-sm transition-transform hover:-rotate-1">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-pulse"></span>
+      <span class="font-label-md text-label-md text-on-surface">Building open-source dev tools from {{ site.author.location }}</span>
+    </div>
+    <h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-on-surface tracking-tight">
+      Hey, I'm {{ first_name }}! <span class="inline-block animate-bounce">👋</span><br>
+      I turn caffeine into <span class="bg-primary-container px-2 py-0.5 rounded-lg comic-border inline-block -rotate-1 comic-shadow-sm">clean code</span> &amp; silly experiments.
+    </h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">{{ site.description }}</p>
+    <div class="flex flex-wrap gap-2 pt-1 pb-2">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl comic-border bg-tertiary-container font-label-md text-label-md text-on-surface comic-shadow-sm -rotate-2 hover:rotate-0 transition-transform"><span class="material-symbols-outlined text-[16px]">laptop_mac</span>{{ site.author.role }}</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl comic-border bg-secondary-container font-label-md text-label-md text-on-surface comic-shadow-sm rotate-2 hover:rotate-0 transition-transform"><span class="material-symbols-outlined text-[16px]">rocket_launch</span>{{ site.data.projects.size }} Open-Source Tools</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl comic-border bg-[#FCA5A5] font-label-md text-label-md text-on-surface comic-shadow-sm -rotate-1 hover:rotate-0 transition-transform"><span class="material-symbols-outlined text-[16px]">memory</span>Rust · TS · Odin · Java</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl comic-border bg-primary-container font-label-md text-label-md text-on-surface comic-shadow-sm rotate-3 hover:rotate-0 transition-transform"><span class="material-symbols-outlined text-[16px]">coffee</span>Professional Coffee Maker</span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl comic-border bg-[#E9D5FF] font-label-md text-label-md text-on-surface comic-shadow-sm -rotate-2 hover:rotate-0 transition-transform"><span class="material-symbols-outlined text-[16px]">terminal</span>Vim &amp; Emacs Whisperer</span>
+    </div>
+    <div class="flex flex-wrap gap-space-sm items-center pt-2">
+      <a class="px-space-lg py-3 rounded-xl comic-border bg-primary-container text-on-surface font-headline-sm text-headline-sm comic-shadow-md hover:-translate-x-0.5 hover:-translate-y-0.5 hover:comic-shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-space-xs" href="#featured-projects">
+        <span>Explore My Projects</span><span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+      </a>
+      <a class="px-space-lg py-3 rounded-xl comic-border bg-tertiary-container text-on-surface font-headline-sm text-headline-sm comic-shadow-md hover:-translate-x-0.5 hover:-translate-y-0.5 hover:comic-shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-space-xs" href="#recent-articles">
+        <span>Read The Blog</span><span class="material-symbols-outlined text-[20px]">menu_book</span>
+      </a>
+      {%- if site.resume_pdf != "" %}
+      <a class="px-space-md py-3 rounded-xl comic-border bg-secondary-container text-on-surface font-headline-sm text-headline-sm comic-shadow-md hover:-translate-x-0.5 hover:-translate-y-0.5 hover:comic-shadow-lg active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-space-xs" href="{{ site.resume_pdf | relative_url }}">
+        <span>Resume.pdf</span><span class="material-symbols-outlined text-[20px]">description</span>
+      </a>
+      {%- endif %}
+    </div>
+  </div>
+
+  <div class="lg:col-span-5 flex flex-col gap-space-md items-center lg:items-end relative">
+    <div class="relative w-full max-w-sm rounded-2xl comic-border bg-secondary-container p-space-md comic-shadow-lg">
+      <div class="absolute -top-4 -left-4 z-20 px-space-sm py-1 rounded-full comic-border bg-primary-container text-on-surface font-label-md text-label-md comic-shadow-sm -rotate-6">☕ Coffee Powered</div>
+      <div class="absolute -top-3 -right-3 z-20 px-space-sm py-1 rounded-full comic-border bg-tertiary-container text-on-surface font-label-md text-label-md comic-shadow-sm rotate-6">✨ Java Wizard</div>
+      <div class="w-full aspect-square rounded-xl comic-border bg-surface-container-lowest overflow-hidden flex items-center justify-center relative group">
+        <img alt="Cartoon portrait of {{ site.author.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ site.author.avatar | relative_url }}">
+        <div class="absolute bottom-3 right-3 px-space-sm py-0.5 rounded-full comic-border bg-surface-container-lowest/90 backdrop-blur-sm font-label-sm text-label-sm text-on-surface comic-shadow-sm">💬 Always building!</div>
+      </div>
+    </div>
+    <div class="w-full max-w-sm rounded-xl comic-border bg-[#18181b] text-[#fbf8fc] comic-shadow-md overflow-hidden">
+      <div class="px-space-sm py-1.5 bg-[#27272a] border-b-[2.5px] border-[#18181b] flex items-center justify-between">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#ef4444] inline-block"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#eab308] inline-block"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#22c55e] inline-block"></span>
+        </div>
+        <span class="font-code-block text-label-sm text-surface-variant">Developer.java</span>
+      </div>
+      <div class="p-space-sm font-code-block overflow-x-auto text-[13px] leading-relaxed"><span class="text-[#7dd3fc]">public record</span> <span class="text-primary-container font-bold">Developer</span>(<br>&nbsp;&nbsp;<span class="text-[#86efac]">String</span> name,<br>&nbsp;&nbsp;<span class="text-[#86efac]">String</span> status,<br>&nbsp;&nbsp;<span class="text-[#7dd3fc]">int</span> coffeeLevel<br>) {<br>&nbsp;&nbsp;<span class="text-[#7dd3fc]">static final</span> Developer ME =<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-[#7dd3fc]">new</span> Developer(<span class="text-primary-container">"{{ first_name }}"</span>, <span class="text-[#86efac]">"deploying to prod..."</span>, <span class="text-[#fca5a5]">100</span>);<br>}</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+  {%- assign stat_icons = "folder_code,calendar_month,translate,deployed_code" | split: "," -%}
+  {%- assign stat_bgs = "bg-primary-container,bg-secondary-container,bg-tertiary-container,bg-[#FCA5A5]" | split: "," -%}
+  {%- for s in site.data.stats %}
+  <div class="p-space-md rounded-xl comic-border {{ stat_bgs[forloop.index0] }} comic-shadow-md flex flex-col justify-between gap-space-sm hover:-translate-y-1 transition-transform">
+    <div class="flex items-center justify-end">
+      <span class="material-symbols-outlined text-[24px]">{{ stat_icons[forloop.index0] }}</span>
+    </div>
+    <div>
+      <div class="font-headline-lg text-headline-lg text-on-surface leading-none">{{ s.value }}</div>
+      <div class="font-label-md text-label-md text-on-surface-variant mt-1">{{ s.label }}</div>
+    </div>
+  </div>
+  {%- endfor %}
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="flex flex-col gap-space-lg pt-space-sm" id="featured-projects">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full comic-border bg-tertiary-container text-on-surface font-label-sm text-label-sm mb-space-xs comic-shadow-sm"><span>🛠️</span><span>What I've Been Building</span></div>
+      <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Handcrafted Side Projects &amp; Tools</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-1">Real apps, open code, zero venture capital and maximum vibes.</p>
+    </div>
+    <a class="font-headline-sm text-label-md text-on-surface hover:text-primary transition-colors flex items-center gap-1 group" href="{{ '/projects/' | relative_url }}">
+      <span>See All {{ site.data.projects.size }} Projects</span>
+      <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+    </a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+    {%- for p in site.data.projects limit: 3 %}
+    <div class="flex flex-col justify-between rounded-2xl comic-border bg-surface-container-lowest p-space-md comic-shadow-md hover:comic-shadow-lg hover:-translate-y-1 transition-all">
+      <div class="flex flex-col gap-space-sm">
+        <div class="w-full h-44 rounded-xl comic-border bg-{{ p.color }}-container relative overflow-hidden flex items-center justify-center p-4">
+          {% include project-art.html slug=p.slug %}
+          <span class="absolute top-2.5 left-2.5 px-space-xs py-0.5 rounded-full comic-border bg-surface-container-lowest font-label-sm text-label-sm text-on-surface comic-shadow-sm font-bold">{% if p.status == "In Progress" %}🛠️{% else %}🚀{% endif %} {{ p.status }}</span>
+        </div>
+        <div class="flex flex-col gap-1">
+          <h3 class="font-headline-sm text-headline-sm text-on-surface">{{ p.name }}</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">{{ p.tagline }}</p>
+        </div>
+        <div class="flex flex-wrap gap-1.5 pt-1">
+          {%- for t in p.stack limit: 4 %}
+          <span class="px-2 py-0.5 rounded-md comic-border bg-surface-container font-label-sm text-label-sm">{{ t }}</span>
+          {%- endfor %}
+        </div>
+      </div>
+      <div class="flex items-center gap-space-sm pt-space-md border-t-[2.5px] border-[#18181b] mt-space-md">
+        <a class="flex-1 py-2 text-center rounded-xl comic-border bg-{{ p.color }}-container font-headline-sm text-label-md text-on-surface comic-shadow-sm hover:comic-shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all" href="{{ p.repo }}#readme" target="_blank" rel="noopener">Read More ↗</a>
+        <a class="px-space-md py-2 rounded-xl comic-border bg-surface-container-lowest font-headline-sm text-label-md text-on-surface comic-shadow-sm hover:comic-shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all flex items-center gap-1" href="{{ p.repo }}" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+
+<!-- GOLDEN RULE -->
+<section class="relative my-space-sm">
+  <div class="relative p-space-lg rounded-2xl comic-border bg-surface-container-lowest comic-shadow-lg flex flex-col md:flex-row items-center gap-space-lg">
+    <div class="absolute -top-3 left-6 w-16 h-6 bg-primary-container comic-border -rotate-6 comic-shadow-sm"></div>
+    <div class="absolute -bottom-3 right-6 w-16 h-6 bg-primary-container comic-border rotate-3 comic-shadow-sm"></div>
+    <div class="w-16 h-16 rounded-2xl comic-border bg-[#FCA5A5] flex items-center justify-center shrink-0 comic-shadow-sm -rotate-3">
+      <span class="material-symbols-outlined text-[36px] text-on-surface">psychology</span>
+    </div>
+    <div class="flex flex-col gap-1 text-center md:text-left">
+      <span class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant tracking-wider">{{ first_name }}'s Golden Rule of Code</span>
+      <blockquote id="golden-rule" class="font-headline-sm text-headline-sm text-on-surface italic">“Write code like the next maintainer is a violent psychopath who knows where you live. Or worse: future you on a Monday morning.”</blockquote>
+    </div>
+    <div class="shrink-0">
+      <button type="button" data-copy="#golden-rule" data-copy-message="Quote copied! ✨" class="px-space-md py-2 rounded-xl comic-border bg-surface-container text-on-surface font-headline-sm text-label-md comic-shadow-sm hover:comic-shadow-md active:translate-x-0.5 active:translate-y-0.5 transition-all">Copy Quote 📋</button>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT ARTICLES -->
+<section class="flex flex-col gap-space-lg pt-space-sm" id="recent-articles">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-sm">
+    <div>
+      <div class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full comic-border bg-primary-container text-on-surface font-label-sm text-label-sm mb-space-xs comic-shadow-sm"><span>📝</span><span>From The Desk</span></div>
+      <h2 class="font-headline-lg-mobile text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Fresh Brain Dumps &amp; Deep Dives</h2>
+    </div>
+    <a class="font-headline-sm text-label-md text-on-surface hover:text-primary transition-colors flex items-center gap-1 group" href="{{ '/articles/' | relative_url }}">
+      <span>View All {{ site.posts.size }} Articles</span>
+      <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+    </a>
+  </div>
+  {%- if site.posts.size > 0 %}
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+    <div class="lg:col-span-7">
+      {% include post-card-featured.html post=site.posts.first %}
+    </div>
+    <div class="lg:col-span-5 flex flex-col gap-space-md">
+      {%- for post in site.posts offset: 1 limit: 3 %}
+      {% include post-card.html post=post %}
+      {%- endfor %}
+    </div>
+  </div>
+  {%- else %}
+  <p class="font-body-md text-on-surface-variant">No articles yet — the first one is brewing. ☕</p>
+  {%- endif %}
+</section>
+
+{%- if site.newsletter.action != "" %}
+<!-- NEWSLETTER -->
+<section class="rounded-2xl comic-border bg-primary-container p-space-lg comic-shadow-lg">
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+    <div class="max-w-xl text-center lg:text-left flex flex-col gap-space-xs">
+      <div class="inline-flex items-center self-center lg:self-start gap-1 px-space-sm py-0.5 rounded-full comic-border bg-surface-container-lowest text-on-surface font-label-sm text-label-sm comic-shadow-sm font-bold"><span>📬</span><span>DevBytes Comic Dispatch</span></div>
+      <h3 class="font-headline-lg-mobile text-headline-lg-mobile md:text-headline-lg text-on-surface">Weekly Doodles &amp; Architecture Blueprints</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">No corporate spam. Just handcrafted technical deep dives and experimental code playgrounds.</p>
+    </div>
+    {% include newsletter-form.html button_class="bg-surface-container-lowest" button_label="Join Free" %}
+  </div>
+</section>
+{%- endif %}
+</div>

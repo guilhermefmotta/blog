@@ -1,0 +1,93 @@
+# Projects shown on /projects/ and the home page.
+# category: space-separated filter keys (see `filters` in projects.html)
+# color: header accent (primary | secondary | tertiary | error)
+
+- name: ContextOS
+  slug: contextos
+  flagship: true
+  category: desktop ai
+  kind: Desktop • AI Workspace
+  icon: psychology
+  color: tertiary
+  status: Active
+  version: v0.0.15
+  license: GPL-3.0
+  updated: 2026-10-04
+  repo: https://github.com/guilhermefmotta/contextos
+  tagline: AI-native engineering workspace. Chat with your codebase, plan features, review diffs, and apply changes — all in one desktop app.
+  description: >-
+    Every request runs through a four-phase agent pipeline — Planning, Grilling
+    (one blocking question at a time until nothing is ambiguous), Spec and
+    Execution — and every change is shown as a side-by-side diff before anything
+    touches the disk. Works with Anthropic, OpenAI, GitHub Copilot, Groq, Ollama
+    or any OpenAI-compatible endpoint, and ships with skills/plugins, a real PTY
+    terminal and a CodeMirror 6 editor.
+  stack: [Tauri 2, Rust, React 19, TypeScript, SQLite, CodeMirror 6]
+  highlights:
+    - { icon: account_tree, text: "4-phase agent pipeline" }
+    - { icon: difference, text: "Diff review before any write" }
+    - { icon: hub, text: "6 AI providers" }
+  terminal:
+    file: contextos • pipeline
+    lines:
+      - { prompt: true, text: "contextos run \"add dark mode toggle\"" }
+      - { tag: "[1 Planning]", color: "#fde047", text: "approach + affected files proposed" }
+      - { tag: "[2 Grilling]", color: "#fca5a5", text: "1 blocking question answered" }
+      - { tag: "[3 Spec]", color: "#7dd3fc", text: "implementation spec locked" }
+      - { tag: "[4 Execution]", color: "#86efac", text: "3 FILE_EDIT blocks → review diff" }
+
+- name: Git Crab
+  slug: git-crab
+  category: desktop rust
+  kind: Desktop • Git Client
+  icon: commit
+  color: error
+  status: Shipped
+  version: v0.6.0
+  license: MIT
+  updated: 2026-05-21
+  repo: https://github.com/guilhermefmotta/git-crab
+  tagline: A fast, native Git GUI client built with Tauri, Rust (libgit2) and React.
+  description: >-
+    Visual commit graph with color-coded lanes, side-by-side diffs, an
+    IntelliJ-style 3-pane conflict resolver (ours · merged · theirs) with
+    undo/redo, plus branches, stash, tags, cherry-pick, revert, rebase and
+    push/pull — all from one window. E2E-tested with WebdriverIO + tauri-driver.
+  stack: [Tauri 2, Rust, git2, React 18, Zustand, CodeMirror 6]
+
+- name: Spotlight
+  slug: spotlight_rs
+  category: rust tooling
+  kind: Rust • Launcher
+  icon: search
+  color: primary
+  status: Shipped
+  license: MIT
+  updated: 2026-05-02
+  repo: https://github.com/guilhermefmotta/spotlight_rs
+  tagline: Blazingly fast, cross-platform app launcher. Press ALT+D anywhere to search and launch.
+  description: >-
+    A background daemon listens for a global hotkey (rdev) and pops up a
+    transparent egui window with real-time fuzzy search. Discovers apps from
+    FreeDesktop .desktop files (incl. Flatpak & Snap) on Linux and from the
+    Registry on Windows. My Rust playground for threads, mpsc channels and
+    #[cfg] platform code.
+  stack: [Rust, egui, eframe, rdev, winreg]
+
+- name: custom_editor
+  slug: custom_editor
+  category: tooling
+  kind: Odin • Code Editor
+  icon: edit_note
+  color: secondary
+  status: In Progress
+  license: ""
+  updated: 2026-07-10
+  repo: https://github.com/guilhermefmotta/custom_editor
+  tagline: A from-scratch code editor written in Odin and rendered with raylib.
+  description: >-
+    Vim, Emacs or plain keymaps, multi-cursor, an LSP client (completion, hover,
+    diagnostics, semantic tokens, rename, go-to-definition), git integration, a
+    JDWP debugger for Java, outline, command palette, session restore and
+    hot-reloadable TOML config with 4coder, gruvbox and dark themes.
+  stack: [Odin, raylib, LSP, JDWP, TOML]

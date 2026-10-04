@@ -1,0 +1,10 @@
+# Career timeline for /about/. Each entry renders as a card; the section hides when this list is empty.
+# Fill in from your LinkedIn (I couldn't read it — LinkedIn blocks automated access).
+#
+# - period: 2023 — Present
+#   label: CURRENT QUEST
+#   title: Software Engineer @ Trier
+#   active: true
+#   description: What you build there, impact, team.
+#   tags: [Java, Spring Boot]
+[]

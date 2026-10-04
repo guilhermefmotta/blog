@@ -1,0 +1,24 @@
+<footer class="w-full mt-space-xl bg-surface-container-low border-t-[3.5px] border-[#18181b] py-space-xl">
+  <div class="max-w-[1120px] mx-auto px-gutter-mobile md:px-gutter flex flex-col gap-space-lg">
+    {%- if site.newsletter.action != "" %}
+    <div class="p-space-lg bg-surface-container-lowest comic-border rounded-xl comic-shadow-lg flex flex-col md:flex-row items-center justify-between gap-space-lg">
+      <div class="max-w-md text-center md:text-left">
+        <div class="inline-block px-space-sm py-0.5 rounded-full comic-border bg-tertiary-container text-on-surface font-label-sm text-label-sm mb-space-xs">Weekly Digest</div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Get juicy dev bytes in your inbox every Sunday morning!</h3>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Zero spam, pure signal, handcrafted CSS tricks and architecture blueprints.</p>
+      </div>
+      {% include newsletter-form.html input_class="" %}
+    </div>
+    {%- endif %}
+    {% include social-links.html %}
+    <div class="p-space-md bg-surface-container-lowest comic-border rounded-xl comic-shadow-sm text-center">
+      <p class="font-code-inline text-code-inline text-on-surface-variant">Crafted with ☕, Jekyll &amp; lots of bug fixes by {{ site.author.name }} © {{ site.time | date: "%Y" }}. Built to break and rebuild.</p>
+    </div>
+  </div>
+</footer>
+<div class="fixed bottom-6 right-6 z-50 translate-y-24 opacity-0 transition-all duration-200 pointer-events-none" id="copy-toast">
+  <div class="px-4 py-2.5 bg-surface-container-lowest comic-border rounded-xl comic-shadow-md flex items-center gap-2.5 font-label-md text-label-md text-on-surface">
+    <span class="w-6 h-6 rounded-full bg-secondary-container comic-border flex items-center justify-center text-xs">✓</span>
+    <span id="copy-toast-text">Copied to clipboard!</span>
+  </div>
+</div>

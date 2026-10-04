@@ -1,0 +1,182 @@
+---
+layout: default
+---
+{%- assign accent = page.category | default: "default" -%}
+{%- capture minutes -%}{% include reading-time.html content=content %}{%- endcapture -%}
+{%- assign title_html = page.title | escape -%}
+{%- if page.title_highlight -%}
+  {%- capture mark -%}<span class="inline-block relative px-3 py-1 mx-1 bg-brandYellow neo-border-sm rounded-xl -rotate-1 neo-shadow-sm">{{ page.title_highlight | escape }}</span>{%- endcapture -%}
+  {%- assign title_html = title_html | replace: page.title_highlight, mark -%}
+{%- endif -%}
+
+<!-- Breadcrumb & Tag Strip -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+  <div class="flex items-center gap-2 font-mono text-sm min-w-0">
+    <a href="{{ '/articles/' | relative_url }}" class="inline-flex items-center gap-1 px-3 py-1.5 bg-white neo-border-sm rounded-xl neo-shadow-sm hover:-translate-y-0.5 transition-all shrink-0">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+      <span>Back to Articles</span>
+    </a>
+    {%- if page.category %}
+    <span class="text-zinc-400">/</span>
+    <span class="text-zinc-500 truncate">{{ page.category }}</span>
+    {%- endif %}
+  </div>
+  {%- if page.tags.size > 0 %}
+  <div class="flex flex-wrap items-center gap-2">
+    {%- assign tag_colors = "bg-brandYellow,bg-brandGreen,bg-brandBlue,bg-brandCoral" | split: "," -%}
+    {%- for tag in page.tags %}
+    {%- assign ci = forloop.index0 | modulo: 4 %}
+    <span class="px-2.5 py-0.5 {{ tag_colors[ci] }} font-mono text-xs font-bold neo-border-sm rounded-full neo-shadow-sm">#{{ tag }}</span>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+</div>
+
+<!-- Article Header Card -->
+<section class="bg-white neo-border rounded-2xl p-6 sm:p-10 neo-shadow-lg relative overflow-hidden mb-10">
+  {%- if page.label %}
+  <div class="absolute -top-1 -right-1 bg-brandGreen font-mono text-xs font-extrabold neo-border-sm px-4 py-1 rounded-bl-xl shadow-[-2px_2px_0px_#18181b]">{{ page.label }}</div>
+  {%- endif %}
+  <div class="max-w-4xl space-y-5">
+    <h1 class="font-heading font-extrabold text-3xl sm:text-5xl leading-tight tracking-tight">{{ title_html }}</h1>
+    {%- if page.description %}
+    <p class="font-body text-zinc-600 text-lg sm:text-xl leading-relaxed">{{ page.description }}</p>
+    {%- endif %}
+
+    <div class="pt-4 flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm text-zinc-600 border-t-2 border-zinc-100">
+      <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calendar_today</span>{{ page.date | date: "%b %-d, %Y" }}</span>
+      <span>•</span>
+      <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">schedule</span>{{ minutes }} min read</span>
+      {%- if page.last_modified_at %}
+      <span>•</span>
+      <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">update</span>Updated {{ page.last_modified_at | date: "%b %-d, %Y" }}</span>
+      {%- endif %}
+    </div>
+
+    <!-- Author Strip -->
+    <div class="pt-3 flex flex-wrap items-center justify-between gap-4 border-t-2 border-zinc-100">
+      <div class="flex items-center gap-3.5">
+        <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="w-12 h-12 rounded-xl object-cover bg-brandYellow neo-border-sm neo-shadow-sm">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-heading font-bold text-lg">{{ site.author.name }}</span>
+            <span class="font-mono text-xs font-bold text-amber-600 bg-amber-50 neo-border-sm px-2 py-0.5 rounded-md">{{ site.author.handle }}</span>
+          </div>
+          <p class="font-body text-xs text-zinc-500">{{ site.author.short_bio }}</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" data-share class="px-3.5 py-1.5 bg-white neo-border-sm rounded-xl font-mono text-xs font-bold neo-shadow-sm hover:-translate-y-0.5 transition-all flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">share</span> Share
+        </button>
+        <button type="button" data-copy="url" data-copy-message="Link copied to clipboard!" class="px-3.5 py-1.5 bg-brandYellow neo-border-sm rounded-xl font-mono text-xs font-bold neo-shadow-sm hover:-translate-y-0.5 transition-all flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">link</span> Copy Link
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO-COLUMN EDITORIAL GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+  <article class="lg:col-span-8 flex flex-col space-y-10 min-w-0">
+    <section class="bg-white neo-border rounded-2xl p-6 sm:p-8 neo-shadow">
+      <div class="prose-comic" data-toc>
+        {{ content }}
+      </div>
+    </section>
+
+    <!-- Author Bio Card -->
+    <section class="bg-white neo-border rounded-2xl p-6 sm:p-8 neo-shadow flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+      <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="w-24 h-24 rounded-2xl neo-border neo-shadow-sm bg-brandGreen/30 object-cover shrink-0">
+      <div class="space-y-3 text-center sm:text-left">
+        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+          <span class="font-heading font-bold text-xl">Written by {{ site.author.name }}</span>
+          <span class="px-2.5 py-0.5 bg-brandYellow neo-border-sm rounded-full font-mono text-xs font-bold">Author</span>
+        </div>
+        <p class="font-body text-sm text-zinc-600 leading-relaxed">{{ site.author.bio }}</p>
+        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-1">
+          {%- if site.buy_me_a_coffee != "" %}
+          <a href="{{ site.buy_me_a_coffee }}" target="_blank" rel="noopener" class="px-4 py-2 bg-brandYellow neo-border-sm rounded-xl font-mono text-xs font-bold neo-shadow-sm hover:-translate-y-0.5 transition-all flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">coffee</span> Buy me a Coffee
+          </a>
+          {%- endif %}
+          <a href="{{ '/about/' | relative_url }}" class="px-4 py-2 bg-zinc-100 neo-border-sm rounded-xl font-mono text-xs font-bold neo-shadow-sm hover:-translate-y-0.5 transition-all">More about me</a>
+          {%- if site.social.twitter != "" %}
+          <a href="{{ site.social.twitter }}" target="_blank" rel="noopener" class="px-4 py-2 bg-zinc-100 neo-border-sm rounded-xl font-mono text-xs font-bold neo-shadow-sm hover:-translate-y-0.5 transition-all">Follow on Twitter/X</a>
+          {%- endif %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Previous & Next -->
+    {%- if page.previous or page.next %}
+    <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {%- if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}" class="p-5 bg-white neo-border rounded-2xl neo-shadow hover:-translate-y-1 transition-all flex flex-col justify-between group">
+        <div class="font-mono text-xs text-zinc-400 flex items-center gap-1 mb-2">
+          <span class="material-symbols-outlined text-[16px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+          <span>PREVIOUS ESSAY</span>
+        </div>
+        <span class="font-heading font-bold text-base text-brandDark group-hover:text-amber-600 transition-colors">{{ page.previous.title }}</span>
+      </a>
+      {%- else %}<div class="hidden sm:block"></div>{%- endif %}
+      {%- if page.next %}
+      <a href="{{ page.next.url | relative_url }}" class="p-5 bg-white neo-border rounded-2xl neo-shadow hover:-translate-y-1 transition-all flex flex-col justify-between group text-right">
+        <div class="font-mono text-xs text-zinc-400 flex items-center justify-end gap-1 mb-2">
+          <span>NEXT ESSAY</span>
+          <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </div>
+        <span class="font-heading font-bold text-base text-brandDark group-hover:text-amber-600 transition-colors">{{ page.next.title }}</span>
+      </a>
+      {%- endif %}
+    </nav>
+    {%- endif %}
+  </article>
+
+  <!-- Sticky Sidebar -->
+  <aside class="lg:col-span-4 flex flex-col space-y-6 lg:sticky lg:top-28">
+    <div id="toc-box" class="bg-white neo-border rounded-2xl p-5 neo-shadow space-y-3">
+      <div class="flex items-center justify-between pb-2 border-b-2 border-brandDark">
+        <span class="font-mono text-xs font-bold flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-amber-500">format_list_bulleted</span>
+          TABLE OF CONTENTS
+        </span>
+        <span id="toc-count" class="px-2 py-0.5 bg-brandYellow neo-border-sm rounded font-mono text-[10px] font-bold"></span>
+      </div>
+      <nav id="toc" class="space-y-1.5 font-mono text-xs"></nav>
+    </div>
+
+    {%- if page.companions %}
+    <div class="bg-white neo-border rounded-2xl p-5 neo-shadow space-y-3">
+      <span class="font-mono text-xs font-bold flex items-center justify-between pb-2 border-b-2 border-brandDark">
+        <span>CODE COMPANIONS</span>
+        <span class="material-symbols-outlined text-[16px]">terminal</span>
+      </span>
+      <div class="space-y-2.5">
+        {%- for c in page.companions %}
+        <a href="{{ c.url | relative_url }}" class="p-3 bg-zinc-50 neo-border-sm rounded-xl neo-shadow-sm hover:-translate-y-0.5 transition-all block">
+          <div class="flex items-center justify-between text-xs font-mono mb-1">
+            <span class="font-bold">{{ c.title }}</span>
+            <span class="px-1.5 py-0.5 bg-brandBlue neo-border-sm rounded text-[10px]">{{ c.kind | default: "Link" }}</span>
+          </div>
+          <p class="font-body text-xs text-zinc-500 line-clamp-1">{{ c.description }}</p>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endif %}
+
+    {%- if site.newsletter.action != "" %}
+    <div class="bg-brandYellow neo-border rounded-2xl p-5 neo-shadow space-y-3">
+      <div class="inline-block px-2.5 py-0.5 bg-white neo-border-sm rounded-full font-mono text-[10px] font-bold">WEEKLY DISPATCH</div>
+      <h4 class="font-heading font-bold text-lg leading-snug">Get no-BS architecture retros in your inbox.</h4>
+      <p class="font-body text-xs text-zinc-700">One illustrated essay every week. Zero spam, unsubscribe whenever.</p>
+      <form class="space-y-2 pt-1" action="{{ site.newsletter.action }}" method="post" target="_blank">
+        <input type="email" name="{{ site.newsletter.field_name }}" required placeholder="you@company.dev" class="w-full px-3 py-2 bg-white neo-border-sm rounded-xl font-mono text-xs focus:outline-none">
+        <button type="submit" class="w-full py-2.5 bg-brandGreen neo-border-sm rounded-xl font-mono text-xs font-bold neo-shadow-sm hover:-translate-y-0.5 transition-all">Subscribe Free 🚀</button>
+      </form>
+    </div>
+    {%- endif %}
+  </aside>
+</div>

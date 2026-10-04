@@ -1,0 +1,7 @@
+{%- comment -%} Params: placeholder, button_class, button_label, input_class {%- endcomment -%}
+<form class="w-full md:w-auto flex flex-col sm:flex-row items-stretch gap-space-sm" action="{{ site.newsletter.action }}" method="post" target="_blank">
+  <input class="{{ include.input_class | default: 'sm:w-72' }} px-space-md py-2.5 rounded-xl comic-border bg-surface-container-lowest font-code-inline text-code-inline text-on-surface focus:outline-none focus:comic-shadow-md transition-all" name="{{ site.newsletter.field_name }}" placeholder="{{ include.placeholder | default: 'you@company.dev' }}" required type="email">
+  <button class="px-space-lg py-2.5 rounded-xl comic-border {{ include.button_class | default: 'bg-secondary-container' }} text-on-surface font-headline-sm text-label-md comic-shadow-sm hover:comic-shadow-md hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-space-xs" type="submit">
+    <span>{{ include.button_label | default: 'Subscribe' }}</span><span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+  </button>
+</form>

@@ -1,0 +1,96 @@
+title: Guilherme.dev
+tagline: Writing about AI and how to be the next developer
+description: >-
+  Senior Full-Stack Tinkerer & Open-Source creator. Writing about AI and how to
+  be the next developer.
+url: "https://guilhermefmotta.github.io" # e.g. https://guilherme.dev
+baseurl: "/blog"
+lang: en
+timezone: Europe/Lisbon
+
+version_badge: "v2.4 [online]"
+
+author:
+  name: Guilherme Motta
+  handle: "@guilhermefmotta"
+  role: Software Engineer @ Trier
+  short_bio: Software engineer · Lisbon, PT · My talent is making coffee ☕
+  bio: >-
+    Software engineer based in Lisbon who builds desktop apps, developer tooling
+    and AI-native workflows in Rust, TypeScript, Java and Odin. Writing about AI
+    and how to be the next developer.
+  avatar: /assets/img/avatar.png
+  email: "" # public contact email; empty hides mailto buttons
+  location: Lisbon, PT
+  github_user: guilhermefmotta
+
+# Leave a value empty to hide its button/link.
+social:
+  github: https://github.com/guilhermefmotta
+  twitter: ""
+  linkedin: https://www.linkedin.com/in/guilherme-motta-31a964142/
+  discord: ""
+buy_me_a_coffee: ""
+resume_pdf: ""
+
+# Newsletter form posts here (Buttondown, ConvertKit, etc.). Empty = hidden.
+newsletter:
+  action: ""
+  field_name: email
+
+# Category -> chip background color (any CSS color or Tailwind arbitrary value)
+category_colors:
+  Rust: "#FCA5A5"
+  Desktop: "#86EFAC"
+  Architecture: "#FCA5A5"
+  Backend: "#86EFAC"
+  DevOps: "#86EFAC"
+  TypeScript: "#FDE047"
+  JavaScript: "#FDE047"
+  CSS & Web: "#86EFAC"
+  UI: "#7DD3FC"
+  Career: "#E9D5FF"
+  AI: "#7DD3FC"
+  default: "#FDE047"
+
+permalink: /articles/:title/
+
+collections:
+  snippets:
+    output: false
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    block:
+      line_numbers: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - layout/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .bundle/
